@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the structure for the linked list node
+struct node {
+    int data;
+    struct node *link;
+};
+
+// Function to detect a cycle in the linked list
+struct node *findcycle(struct node *start) {
+    struct node *slowp, *fastp;
+
+    // If the list is empty or has only one node
+    if (start == NULL || start->link == NULL)
+        return NULL;
+
+    slowp = fastp = start;
+
+    // Move slowp by one step and fastp by two steps
+    while (fastp != NULL && fastp->link != NULL) {
+        slowp = slowp->link;          // Slow pointer moves one step
+        fastp = fastp->link->link;    // Fast pointer moves two steps
+
+        // If slowp and fastp meet, there is a cycle
+        if (slowp == fastp)
+            return slowp;  // Return the node where they meet
+    }
+
+    // If no cycle is found, return NULL
+    return NULL;
+}
+
+// Function to create a new node
+struct node* newNode(int data) {
+    struct node *temp = (struct node*)malloc(sizeof(struct node));
+    temp->data = data;
+    temp->link = NULL;
+    return temp;
+}
+
+// Main function for testing
+int main() {
+    // Create nodes for the linked list
+    struct node *head = newNode(1);
+    head->link = newNode(2);
+    head->link->link = newNode(3);
+    head->link->link->link = newNode(4);
+
+    // Creating a cycle for testing
+    head->link->link->link->link = head->link;  // Cycle created here (4 -> 2)
+
+    // Detect the cycle
+    struct node *cycleNode = findcycle(head);
+
+    if (cycleNode != NULL)
+        printf("Cycle detected at node with data: %d\n", cycleNode->data);
+    else
+        printf("No cycle detected\n");
+
+    return 0;
+}
+

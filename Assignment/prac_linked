@@ -1,0 +1,217 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+int info;
+struct node *link;
+}
+main()
+{
+struct node *start=NULL;
+int data,x,choice;
+
+start= crateList(start);
+
+while(1)
+{
+printf(" 1.display list \n");
+printf("2.count the number of nodes \n");
+printf("3.search for an element");
+printf("4.insert Node in beginning");
+
+printf("enter your choice");
+scanf("%d",&choice);
+
+if(choice==11)
+break;
+
+switch(choice);
+case1:
+displaylist(start);
+break;
+case2:
+countNodes(start);
+break;
+case3:
+printf("enter the element you want to search");
+scanf("%d,data);
+searchNodes(start,data);
+break;
+case4:
+printf("enter the element you want add");
+scanf("%d",&data);
+insertNodebeginning(start,data);
+case5:
+printf("enter the element you add in end")
+scanf("%d",&data);
+insertNodeEND(start,data);
+case6:
+printf("enter the element you want to inserted");
+scanf("%d",&data);
+printf("enter the element after which you want to insert");
+scanf("%d",&x);
+ensertAfter(start,data,x);
+case7:
+printf("enter the elemets");
+scanf("%d",data);
+printf("enter the element before which which you want to ensert");
+scanf("%d",x);
+ensertBefore(start,data,x);
+case8:
+reversing(start);
+break;
+
+void displaylist(struct node start){
+struct node *P;
+if(start==NULL){
+print("list is empty");
+return;
+}
+p=start;
+while(p==NULL){
+printf("%d",p->info);
+p=p->link;
+}
+printf("\n");
+}
+
+void countNodes(start){
+int n=0;
+struct node *p;
+while(p!=NULL){
+n++;
+p=p->link;
+}
+printf("number of nodes in list %d \n",n);
+}
+
+void searchNodes(start,data){
+printf("which element you want me to search");
+scanf("%d",&data);
+struct node *p;
+p=start;
+int position;
+while(p!=NULL){
+if(p->info==data){
+break;
+position++;
+p=p->link;
+}
+}
+if(p==NULL){
+printf("the element is not present here");
+}
+else{
+printf("your elemet present in the position %d \n",postion);
+}
+}
+
+struct node *insertionNodebeginning(struct node *start,int data){
+struct node *temp;
+temp=(struct node*)malloc(sizeof(struct node));
+temp->info=data;
+
+start->link=temp;
+start=temp;
+return start; 
+}
+
+void insertNodeEnd(struct node *start,int data){
+struct node *temp;
+temp=(struct node)malloc(sizeof(struct node));
+temp->info=data;
+
+p=start;
+while(p->link=NULL)
+p=p-link;
+p->link=temp;
+temp->link=NULL;
+}
+
+struct node *createList(struct node *start)
+{
+int n;
+printf("Enter the total number of nodes ");
+scanf("%d",n);
+if(n==0)
+return start;
+printf("enter the first element of the list");
+scanf("%d",data);
+insertNodebeginning(start,data);
+for(i=2;i<n;i++)
+{
+printf(enter the next element of the node);
+scanf("%d",data);
+insertNodeEnd(start,data);
+}
+}
+
+void inserafter(stuct node *start,int data,int x){
+struct node *temp,*p;
+p= start;
+while(p!=NULL)
+{
+if(p->info=x)
+break;
+p=p->link;
+}
+if(p==NULL)
+printf("not present in the list");
+else
+{
+temp=(struct node)malloc(sizeof(struct node))
+temp->info=data;
+temp->link=p->link;
+p->link=temp;
+}
+}
+
+void insertBefore(struct node start,int data,int x){
+struct node *temp,*p;
+p= start;
+if(start==NULL)
+{
+printf("list is empty\n");
+return start;
+}
+if(x==start->info)
+{
+temp=(struct node)malloc(sizeof(struct node));
+temp->info=data;
+start->link=temp;
+start=temp;
+return start;
+}
+while(p->!=NULL)
+{
+if(p->info=x)
+break;
+p=p->link;
+}
+if(p==NULL)
+printf("not present in the list");
+else
+{
+temp=(struct node)malloc(sizeof(struct node))
+temp->info=data;
+temp->link=p->link;
+p->link=temp;
+}
+
+struct node *reversing(struct node start)
+{
+struct node *prev,*ptr,*next;
+prev=null;
+ptr=start;
+while(ptr!=NULL)
+{
+ptr->link=next;
+ptr->link=prev;
+prev=ptr;
+ptr=next;
+}
+start=prev;
+return start;
+}
+
