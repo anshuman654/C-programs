@@ -1,0 +1,36 @@
+#include<stdio.h>
+
+int profit(int arr[],int n)
+{
+	int buy=arr[0],sell=arr[0],i,j,profit;
+
+		for(i=0;i<n;i++){
+			 	if(buy>arr[i]){
+					buy==arr[i];
+				}
+				if(sell<arr[i]){
+					sell=arr[i];
+				}
+				}
+					profit=sell-buy;
+
+			return profit;
+}
+
+int main(){
+	int arr[50],n;
+
+	printf("how many elements you want in your array");
+		scanf("%d",&n);
+
+		printf("enter the elements in the array");
+			for (int i;i<n;i++)
+			{
+				scanf("%d",&n);
+			}
+		
+			int totalprofit=profit(arr,n);		
+				printf("enter the total profit: %d",totalprofit);
+	
+	return 0;
+}
