@@ -1,0 +1,6 @@
+1 JohnDoe 50000.00
+2 JaneSmith 60000.50
+3 BobJohnson 55000.75
+4 Alice Williams 70000.00
+5 Charlie Brown 45000.25
+
